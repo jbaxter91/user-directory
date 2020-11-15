@@ -1,5 +1,7 @@
 # User Directory ![MIT License](https://img.shields.io/badge/License-MIT-Green)
 
+![user-directory](https://user-images.githubusercontent.com/67088604/99178137-279dd500-26c5-11eb-9710-1f2c172b005c.png)
+
 ## Description
 
 Simple user directory for displaying non critical information about the current users
