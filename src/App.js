@@ -10,36 +10,32 @@ function App() {
 
   useEffect(() => {
     setEmployees(db);
-  }, [])
-  
+  }, []);
 
   const getByDepartment = (e) => {
-    console.log(e.target.value);
-    const filteredDB = db.filter(employee => employee.department === e.target.value);
-    console.log(filteredDB);
+    const filteredDB = db.filter(
+      (employee) => employee.department === e.target.value
+    );
     setEmployees(filteredDB);
-    if(e.target.value === 'all'){
-      console.log('hello')
-      setEmployees(db)
+    if (e.target.value === "all") {
+      setEmployees(db);
     }
-  }
+  };
 
-  // removeEmployee = id => {
-  //   // Filter this.state.employees for employees with an id not equal to the id being removed
-  //   const employees = this.state.employees.filter(employee => employee.id !== id);
-  //   // Set this.state.employees equal to the new employees array
-  //   this.setState({ employees });
-  // };
+  //Possible real time search... not done yet!
+ const handleChange = (e) => {
+    this.setState({search: e.target.value});
+  } 
 
   // Map over this.state.employees and render a EmployeeCard component for each employee object
- 
-    return (
-      <Wrapper>
-        <Title>Employees List</Title>
-        <div className="row">
+
+  return (
+    <Wrapper>
+      <Title>Employees List</Title>
+      <div className="row">
         <div className="drop-down-flex">
-          <label className="label">Choose a Department</label>
-          <select className="drop-down box" onChange={getByDepartment}>
+          <label className="label col-6">  Choose a Department  </label>
+          <select className="drop-down box col-6" onChange={getByDepartment}>
             <option value="all">All</option>
             <option value="management">Management</option>
             <option value="sales">Sales</option>
@@ -51,20 +47,22 @@ function App() {
             <option value="customer service">Customer Service</option>
           </select>
         </div>
-        </div>
-        {employees.map(employee => (
-          <EmployeeCard
-            //removeEmployee={this.removeEmployee}
-            id={employee.id}
-            key={employee.id}
-            name={employee.name}
-            image={employee.image}
-            occupation={employee.occupation}
-            location={employee.location}
-          />
-        ))}
-      </Wrapper>
-    );
+      </div>
+      <div className="row">
+      {employees.map((employee) => (
+        <EmployeeCard
+          //removeEmployee={this.removeEmployee}
+          id={employee.id}
+          key={employee.id}
+          name={employee.name}
+          image={employee.image}
+          occupation={employee.occupation}
+          location={employee.location}
+        />
+      ))}
+      </div>
+    </Wrapper>
+  );
 }
 
 export default App;
